@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Fontanería García | Expertos en Fontanería – Jerez de la Frontera</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --navy: #0B1F3A;
+  --blue: #1565C0;
+  --blue-light: #1976D2;
+  --orange: #F57C00;
+  --orange-light: #FF9800;
+  --white: #FFFFFF;
+  --gray-light: #F5F7FA;
+  --gray: #64748B;
+  --text: #1E293B;
+  --border: #E2E8F0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); overflow-x: hidden; max-width: 100%; }
+
+/* NAVBAR */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  padding: 1.2rem 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all .35s;
+}
+nav.scrolled {
+  background: var(--navy);
+  padding: .8rem 5%;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.nav-logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.nav-logo-icon {
+  width: 42px; height: 42px; background: var(--orange);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: white;
+}
+.nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: white; line-height: 1.1; }
+.nav-logo-text span { display: block; font-size: .65rem; font-weight: 500; color: var(--orange-light); letter-spacing: .1em; text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .88rem; font-weight: 500; transition: color .25s; }
+.nav-links a:hover { color: var(--orange-light); }
+.nav-cta {
+  background: var(--orange) !important; color: white !important;
+  padding: .6rem 1.4rem; border-radius: 6px; font-weight: 700 !important;
+  transition: background .25s, transform .2s !important;
+}
+.nav-cta:hover { background: var(--orange-light) !important; transform: translateY(-1px); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+.hamburger span { display: block; width: 25px; height: 2px; background: white; border-radius: 2px; transition: all .3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; background: var(--navy); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none; }
+.mobile-menu a:hover { color: var(--orange-light); }
+
+/* HERO */
+#hero {
+  overflow: hidden; max-width: 100%;
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: linear-gradient(135deg, rgba(11,31,58,.92) 0%, rgba(21,101,192,.75) 100%),
+    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(245,124,0,.2); border: 1px solid var(--orange);
+  color: var(--orange-light); font-size: .75rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+}
+.hero-badge i { font-size: .65rem; }
+
+.hero-content { position: relative; z-index: 2; padding: 8rem 5% 5rem; max-width: 750px; }
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900; line-height: 1.05; color: white; margin-bottom: 1.2rem;
+}
+.hero-title span { color: var(--orange-light); }
+.hero-sub { color: rgba(255,255,255,.8); font-size: 1.1rem; line-height: 1.75; max-width: 540px; margin-bottom: 2.2rem; }
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-primary {
+  background: var(--orange); color: white;
+  padding: .95rem 2.2rem; border-radius: 6px;
+  font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 700;
+  text-decoration: none; display: inline-flex; align-items: center; gap: .6rem;
+  transition: background .25s, transform .25s, box-shadow .25s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(245,124,0,.4); }
+.btn-outline {
+  background: transparent; color: white;
+  padding: .95rem 2.2rem; border-radius: 6px;
+  font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 600;
+  text-decoration: none; display: inline-flex; align-items: center; gap: .6rem;
+  border: 2px solid rgba(255,255,255,.4); transition: all .25s;
+}
+.btn-outline:hover { border-color: white; background: rgba(255,255,255,.1); }
+
+.hero-trust { display: flex; gap: 2rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.8); font-size: .85rem; }
+.trust-item i { color: var(--orange-light); font-size: 1rem; }
+
+/* URGENCY BAR */
+.urgency-bar { width: 100%; box-sizing: border-box; overflow: hidden;
+  background: var(--orange); padding: 1rem 5%;
+  display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;
+}
+.urgency-bar p { color: white; font-weight: 700; font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
+.urgency-bar a {
+  background: white; color: var(--orange); font-weight: 800; font-size: 1.1rem;
+  padding: .4rem 1.4rem; border-radius: 5px; text-decoration: none;
+  transition: transform .2s; display: flex; align-items: center; gap: .5rem;
+}
+.urgency-bar a:hover { transform: scale(1.05); }
+
+/* STATS */
+.stats-section {
+  background: var(--navy); padding: 3rem 5%;
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; width: 100%; box-sizing: border-box; overflow: hidden;
+}
+.stat-item { text-align: center; padding: 1.5rem 1rem; }
+.stat-num {
+  font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 900;
+  color: white; line-height: 1;
+}
+.stat-num span { color: var(--orange-light); }
+.stat-label { color: rgba(255,255,255,.6); font-size: .85rem; margin-top: .4rem; }
+
+/* SECTION SHARED */
+section { padding: 90px 5%; }
+.section-tag {
+  font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem;
+}
+.section-tag::before { content: ''; width: 28px; height: 3px; background: var(--orange); border-radius: 2px; }
+.section-title { font-family: 'Montserrat', sans-serif; font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: .8rem; }
+.section-sub { color: var(--gray); font-size: 1rem; line-height: 1.7; max-width: 520px; margin-bottom: 3rem; }
+
+/* SERVICIOS */
+#servicios { background: var(--gray-light); }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+.service-card {
+  background: white; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,.07);
+  transition: transform .3s, box-shadow .3s;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.14); }
+.service-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.service-body { padding: 1.5rem; }
+.service-icon-small {
+  width: 44px; height: 44px; background: rgba(245,124,0,.1);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  color: var(--orange); font-size: 1.1rem; margin-bottom: 1rem;
+}
+.service-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+.service-card p { color: var(--gray); font-size: .88rem; line-height: 1.6; }
+.service-tag { display: inline-block; background: rgba(245,124,0,.1); color: var(--orange); font-size: .7rem; font-weight: 700; padding: .2rem .7rem; border-radius: 100px; margin-top: .8rem; }
+
+/* NOSOTROS */
+#nosotros { background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.about-imgs img { width: 100%; border-radius: 10px; object-fit: cover; }
+.about-imgs img:first-child { height: 320px; grid-column: 1 / -1; }
+.about-imgs img:not(:first-child) { height: 180px; }
+.about-text p { color: var(--gray); line-height: 1.8; margin-bottom: 1.2rem; font-size: .97rem; }
+.certif-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.certif { background: var(--gray-light); color: var(--navy); font-size: .78rem; font-weight: 600; padding: .4rem 1rem; border-radius: 100px; display: flex; align-items: center; gap: .4rem; }
+.certif i { color: var(--orange); }
+
+/* PROCESO */
+#proceso { background: var(--navy); }
+#proceso .section-title { color: white; }
+#proceso .section-sub { color: rgba(255,255,255,.55); }
+.proceso-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.paso {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px; padding: 2rem 1.5rem; text-align: center;
+  transition: background .3s, transform .3s;
+}
+.paso:hover { background: rgba(245,124,0,.1); transform: translateY(-4px); }
+.paso-num { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 900; color: rgba(245,124,0,.2); line-height: 1; }
+.paso-icon { width: 50px; height: 50px; background: var(--orange); border-radius: 50%; margin: -.5rem auto 1.2rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
+.paso h4 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: white; margin-bottom: .5rem; }
+.paso p { color: rgba(255,255,255,.55); font-size: .85rem; line-height: 1.6; }
+
+/* GALERÍA */
+#galeria { background: var(--gray-light); }
+.gallery-grid { columns: 3; gap: 1rem; margin-top: 2.5rem; }
+.gallery-item { break-inside: avoid; margin-bottom: 1rem; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item img { width: 100%; display: block; transition: transform .4s; }
+.gallery-overlay { position: absolute; inset: 0; background: rgba(11,31,58,.6); opacity: 0; transition: opacity .3s; display: flex; align-items: center; justify-content: center; }
+.gallery-overlay i { color: white; font-size: 2rem; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* TESTIMONIALES */
+#testimonios { background: white; overflow: hidden; }
+.testi-wrapper { overflow: hidden; margin-top: 2.5rem; }
+.testi-track { display: flex; gap: 1.5rem; animation: scrollLeft 30s linear infinite; width: max-content; }
+.testi-track:hover { animation-play-state: paused; }
+@keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.testi-card { background: var(--gray-light); border-radius: 12px; padding: 1.8rem; width: 320px; flex-shrink: 0; }
+.testi-stars { color: #F59E0B; margin-bottom: .8rem; font-size: .9rem; }
+.testi-text { color: var(--gray); font-size: .9rem; line-height: 1.7; font-style: italic; margin-bottom: 1.3rem; }
+.testi-author { display: flex; align-items: center; gap: .8rem; }
+.testi-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.testi-avatar-initial { width: 44px; height: 44px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; color: white; font-size: 1rem; }
+.testi-name { font-weight: 700; font-size: .88rem; }
+.testi-role { color: var(--gray); font-size: .75rem; }
+
+/* PRECIOS */
+#precios { background: var(--gray-light); }
+.precios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+.precio-card {
+  background: white; border-radius: 14px; padding: 2.2rem;
+  border: 2px solid var(--border); text-align: center;
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+  position: relative;
+}
+.precio-card.popular { border-color: var(--orange); transform: scale(1.04); }
+.precio-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
+.precio-card.popular:hover { transform: scale(1.04) translateY(-5px); }
+.popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: white; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem 1.2rem; border-radius: 100px; white-space: nowrap; }
+.precio-plan { font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: .8rem; }
+.precio-amount { font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 900; color: var(--navy); line-height: 1; }
+.precio-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: .5rem; }
+.precio-period { color: var(--gray); font-size: .82rem; margin-bottom: 1.5rem; }
+.precio-features { list-style: none; text-align: left; margin-bottom: 2rem; display: flex; flex-direction: column; gap: .7rem; }
+.precio-features li { display: flex; align-items: center; gap: .7rem; font-size: .88rem; color: var(--gray); }
+.precio-features li i { color: var(--orange); font-size: .8rem; flex-shrink: 0; }
+
+/* CONTACTO */
+#contacto { background: white; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-info-items { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem; background: var(--gray-light); border-radius: 10px; }
+.contact-icon { width: 44px; height: 44px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: .95rem; flex-shrink: 0; }
+.contact-item h5 { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); margin-bottom: .2rem; }
+.contact-item a, .contact-item p { color: var(--navy); font-weight: 600; text-decoration: none; font-size: .92rem; }
+.horario-box { background: var(--navy); border-radius: 12px; padding: 1.5rem; }
+.horario-box h4 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: var(--orange-light); margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+.horario-row { display: flex; justify-content: space-between; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.65); font-size: .88rem; }
+.horario-row:last-child { border: none; }
+.horario-row.urgente { color: var(--orange-light); font-weight: 700; }
+
+.form-card { background: var(--gray-light); border-radius: 16px; padding: 2.5rem; }
+.form-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: .3rem; }
+.form-card > p { color: var(--gray); font-size: .88rem; margin-bottom: 1.8rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.1rem; }
+label { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-bottom: .4rem; }
+input, select, textarea { width: 100%; padding: .8rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-family: 'Open Sans', sans-serif; font-size: .92rem; color: var(--text); background: white; outline: none; transition: border-color .25s; }
+input:focus, select:focus, textarea:focus { border-color: var(--blue); }
+textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; justify-content: center; padding: 1rem; font-size: 1rem; margin-top: .5rem; }
+.form-success { display: none; text-align: center; padding: 2rem; }
+.form-success i { font-size: 3rem; color: var(--orange); margin-bottom: 1rem; display: block; }
+.form-success h4 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: .5rem; }
+.form-success p { color: var(--gray); }
+
+/* MAPA */
+#mapa iframe { width: 100%; height: 400px; border: none; display: block; filter: saturate(.85); }
+
+/* FOOTER */
+footer { background: var(--navy); padding: 60px 5% 0; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+.footer-brand p { color: rgba(255,255,255,.5); font-size: .87rem; line-height: 1.7; margin-top: 1rem; }
+.footer-socials { display: flex; gap: .7rem; margin-top: 1.5rem; }
+.footer-socials a { width: 38px; height: 38px; background: rgba(255,255,255,.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: background .25s, color .25s; }
+.footer-socials a:hover { background: var(--orange); color: white; }
+.footer-col h5 { font-family: 'Montserrat', sans-serif; font-size: .88rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: white; margin-bottom: 1.2rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.footer-col ul a { color: rgba(255,255,255,.5); font-size: .87rem; text-decoration: none; transition: color .25s; display: flex; align-items: center; gap: .4rem; }
+.footer-col ul a:hover { color: var(--orange-light); }
+.footer-bottom { padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { color: rgba(255,255,255,.35); font-size: .78rem; }
+.footer-bottom a { color: var(--orange-light); text-decoration: none; }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.92); align-items: center; justify-content: center; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+.lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; transition: color .25s; }
+.lightbox-close:hover { color: var(--orange-light); }
+
+/* MOBILE OVERFLOW FIX */
+section, div, nav, footer { max-width: 100%; }
+.testi-track { max-width: none; }
+
+/* SCROLL ANIMATIONS */
+.fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+  width: 58px; height: 58px; background: #25D366;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.6rem; text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37,211,102,.5);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { box-shadow: 0 6px 20px rgba(37,211,102,.5); } 50% { box-shadow: 0 6px 30px rgba(37,211,102,.8); } }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .stats-section { grid-template-columns: repeat(2,1fr); }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  #nosotros { grid-template-columns: 1fr; gap: 3rem; }
+  .proceso-grid { grid-template-columns: 1fr 1fr; }
+  .precios-grid { grid-template-columns: 1fr; }
+  .precio-card.popular { transform: none; }
+  #contacto { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  nav .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .stats-section { grid-template-columns: repeat(2,1fr); gap: 1rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { columns: 1; }
+  .proceso-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34600 000 000" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><i class="fas fa-wrench"></i></div>
+    <div class="nav-logo-text">Fontanería García<span>Jerez de la Frontera</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#testimonios">Opiniones</a></li>
+    <li><a href="#contacto" class="nav-cta">Presupuesto gratis</a></li>
+  </ul>
+  <button class="hamburger" id="menuBtn"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#precios" onclick="closeMobile()">Precios</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge fade-up"><i class="fas fa-bolt"></i> Urgencias 24 horas · 7 días</div>
+    <h1 class="hero-title fade-up">Tu fontanero<br>de <span>confianza</span><br>en Jerez</h1>
+    <p class="hero-sub fade-up">Más de 20 años solucionando averías, instalaciones y emergencias en Jerez de la Frontera y alrededores. Presupuesto sin compromiso.</p>
+    <div class="hero-btns fade-up">
+      <a href="#contacto" class="btn-primary"><i class="fas fa-file-invoice"></i> Pedir presupuesto</a>
+      <a href="tel:+34600 000 000" class="btn-outline"><i class="fas fa-phone"></i> 600 000 000</a>
+    </div>
+    <div class="hero-trust fade-up">
+      <div class="trust-item"><i class="fas fa-shield-halved"></i> Trabajo garantizado</div>
+      <div class="trust-item"><i class="fas fa-clock"></i> En menos de 60 min</div>
+      <div class="trust-item"><i class="fas fa-star"></i> +500 clientes satisfechos</div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <p><i class="fas fa-triangle-exclamation"></i> ¿Tienes una fuga o avería urgente ahora mismo?</p>
+  <a href="tel:+34600 000 000"><i class="fas fa-phone"></i> Llamar ahora: 600 000 000</a>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-item fade-up"><div class="stat-num">20<span>+</span></div><div class="stat-label">Años de experiencia</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">500<span>+</span></div><div class="stat-label">Clientes satisfechos</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">60<span>min</span></div><div class="stat-label">Respuesta urgencias</div></div>
+  <div class="stat-item fade-up"><div class="stat-num">2<span>años</span></div><div class="stat-label">Garantía trabajos</div></div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-tag">Nuestros servicios</div>
+  <h2 class="section-title fade-up">Todo lo que necesitas<br>en fontanería</h2>
+  <p class="section-sub fade-up">Desde una pequeña reparación hasta una instalación completa. Atendemos particulares, comunidades y empresas.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" alt="Urgencias fontanería" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-bolt"></i></div>
+        <h3>Urgencias y Emergencias</h3>
+        <p>Fugas de agua, roturas de tubería e inundaciones. Atención inmediata las 24 horas del día, 365 días al año.</p>
+        <span class="service-tag">⚡ Disponible 24/7</span>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Reparación tuberías" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-wrench"></i></div>
+        <h3>Reparación de Tuberías</h3>
+        <p>Localización de fugas ocultas con cámara endoscópica. Reparación sin obras innecesarias gracias a técnicas modernas.</p>
+        <span class="service-tag">Sin obras invasivas</span>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Instalación baños" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-shower"></i></div>
+        <h3>Baños y Cocinas</h3>
+        <p>Reforma completa, instalación de sanitarios, grifería, platos de ducha y bañeras. Materiales de primera calidad.</p>
+        <span class="service-tag">Reformas integrales</span>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Calderas y ACS" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-fire-flame-curved"></i></div>
+        <h3>Calderas y Calentadores</h3>
+        <p>Instalación, revisión y mantenimiento de calderas de gas y eléctricas. Certificados oficiales incluidos.</p>
+        <span class="service-tag">Certificado oficial</span>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Instalaciones nuevas" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-building"></i></div>
+        <h3>Instalaciones Nuevas</h3>
+        <p>Proyectos de fontanería para obra nueva, locales comerciales y comunidades de vecinos. Presupuesto detallado gratis.</p>
+        <span class="service-tag">Obra nueva</span>
+      </div>
+    </div>
+    <div class="service-card fade-up">
+      <img src="https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=600&q=80" alt="Tratamiento agua" class="service-img">
+      <div class="service-body">
+        <div class="service-icon-small"><i class="fas fa-droplet"></i></div>
+        <h3>Tratamiento de Agua</h3>
+        <p>Descalcificadores, osmosis inversa y filtros de agua. Mejora la calidad del agua de tu hogar y ahorra en averías.</p>
+        <span class="service-tag">Salud y ahorro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="about-imgs fade-up">
+    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="Fontanero trabajando">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Instalación fontanería">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80" alt="Tuberías profesional">
+  </div>
+  <div class="about-text">
+    <div class="section-tag">Quiénes somos</div>
+    <h2 class="section-title fade-up">Antonio García,<br>tu fontanero en Jerez</h2>
+    <p>Llevo más de 20 años dedicado a la fontanería en Jerez de la Frontera. Empecé como aprendiz con mi padre y hoy tengo un equipo de 4 personas que comparten mi filosofía: hacer las cosas bien a la primera.</p>
+    <p>Cada trabajo lo tratamos como si fuera en nuestra propia casa. Sin sorpresas en el precio, sin obras innecesarias y con materiales de calidad que duran años.</p>
+    <p>Somos fontaneros del barrio, conocemos cada edificio y cada vecino. Cuando nos llamas, sabes que vas a tener a alguien de confianza.</p>
+    <div class="certif-list">
+      <span class="certif"><i class="fas fa-check-circle"></i> Instalador autorizado gas</span>
+      <span class="certif"><i class="fas fa-check-circle"></i> Certificado oficial</span>
+      <span class="certif"><i class="fas fa-check-circle"></i> Seguro de responsabilidad</span>
+      <span class="certif"><i class="fas fa-check-circle"></i> 2 años de garantía</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="section-tag" style="color:var(--orange-light)">Cómo trabajamos</div>
+  <h2 class="section-title fade-up">Sencillo, rápido<br>y sin sorpresas</h2>
+  <p class="section-sub fade-up">Nuestro proceso está diseñado para que tú no tengas que preocuparte de nada.</p>
+  <div class="proceso-grid">
+    <div class="paso fade-up">
+      <div class="paso-num">01</div>
+      <div class="paso-icon"><i class="fas fa-phone"></i></div>
+      <h4>Nos llamas</h4>
+      <p>Llama o escríbenos. Te atendemos en minutos y concertamos la visita a tu hora.</p>
+    </div>
+    <div class="paso fade-up">
+      <div class="paso-num">02</div>
+      <div class="paso-icon"><i class="fas fa-magnifying-glass"></i></div>
+      <h4>Diagnóstico</h4>
+      <p>Inspeccionamos la avería, te explicamos qué hay que hacer y por qué.</p>
+    </div>
+    <div class="paso fade-up">
+      <div class="paso-num">03</div>
+      <div class="paso-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <h4>Presupuesto</h4>
+      <p>Te damos precio exacto por escrito. Sin letra pequeña, sin sorpresas al final.</p>
+    </div>
+    <div class="paso fade-up">
+      <div class="paso-num">04</div>
+      <div class="paso-icon"><i class="fas fa-circle-check"></i></div>
+      <h4>Trabajo listo</h4>
+      <p>Ejecutamos el trabajo, lo dejamos limpio y te entregamos garantía por escrito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="section-tag">Nuestros trabajos</div>
+  <h2 class="section-title fade-up">Lo que hacemos,<br>habla por sí solo</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" alt="Trabajo fontanería">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Tuberías">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="Fontanero">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Instalación">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Caldera">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="Baño reformado">
+      <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALES -->
+<section id="testimonios">
+  <div class="section-tag">Opiniones reales</div>
+  <h2 class="section-title fade-up">Lo que dicen nuestros<br>clientes en Jerez</h2>
+  <div class="testi-wrapper">
+    <div class="testi-track">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Llamé a las 11 de la noche por una fuga enorme y Antonio llegó en menos de 45 minutos. Profesional total, lo arregló todo y el precio fue muy razonable."</p><div class="testi-author"><div class="testi-avatar-initial">MC</div><div><div class="testi-name">María Castillo</div><div class="testi-role">Jerez de la Frontera</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Reformaron el baño completo en 3 días. Puntualísimos, muy limpios en el trabajo y el resultado es espectacular. Repetiremos seguro."</p><div class="testi-author"><div class="testi-avatar-initial">JR</div><div><div class="testi-name">José Romero</div><div class="testi-role">El Puerto de Santa María</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Llevaba meses con una gotera que nadie encontraba. Antonio la localizó en 20 minutos con una cámara sin romper nada. Increíble."</p><div class="testi-author"><div class="testi-avatar-initial">AL</div><div><div class="testi-name">Ana López</div><div class="testi-role">Jerez de la Frontera</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Instalaron la caldera nueva en un día. Nos explicaron todo el funcionamiento y el precio fue exactamente el del presupuesto. Sin sorpresas."</p><div class="testi-author"><div class="testi-avatar-initial">PG</div><div><div class="testi-name">Pedro García</div><div class="testi-role">Sanlúcar de Barrameda</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Los fontaneros más honestos que he conocido. Te dicen lo que necesitas y nada más. No intentan venderte lo que no hace falta. 10 de 10."</p><div class="testi-author"><div class="testi-avatar-initial">SM</div><div><div class="testi-name">Sara Morales</div><div class="testi-role">Rota</div></div></div></div>
+      <!-- duplicate -->
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Llamé a las 11 de la noche por una fuga enorme y Antonio llegó en menos de 45 minutos. Profesional total, lo arregló todo y el precio fue muy razonable."</p><div class="testi-author"><div class="testi-avatar-initial">MC</div><div><div class="testi-name">María Castillo</div><div class="testi-role">Jerez de la Frontera</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Reformaron el baño completo en 3 días. Puntualísimos, muy limpios en el trabajo y el resultado es espectacular. Repetiremos seguro."</p><div class="testi-author"><div class="testi-avatar-initial">JR</div><div><div class="testi-name">José Romero</div><div class="testi-role">El Puerto de Santa María</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Llevaba meses con una gotera que nadie encontraba. Antonio la localizó en 20 minutos con una cámara sin romper nada. Increíble."</p><div class="testi-author"><div class="testi-avatar-initial">AL</div><div><div class="testi-name">Ana López</div><div class="testi-role">Jerez de la Frontera</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Instalaron la caldera nueva en un día. Nos explicaron todo el funcionamiento y el precio fue exactamente el del presupuesto. Sin sorpresas."</p><div class="testi-author"><div class="testi-avatar-initial">PG</div><div><div class="testi-name">Pedro García</div><div class="testi-role">Sanlúcar de Barrameda</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Los fontaneros más honestos que he conocido. Te dicen lo que necesitas y nada más. No intentan venderte lo que no hace falta. 10 de 10."</p><div class="testi-author"><div class="testi-avatar-initial">SM</div><div><div class="testi-name">Sara Morales</div><div class="testi-role">Rota</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="section-tag">Tarifas</div>
+  <h2 class="section-title fade-up">Precios claros<br>sin sorpresas</h2>
+  <p class="section-sub fade-up">Presupuesto gratuito antes de empezar cualquier trabajo. El precio acordado es el precio final.</p>
+  <div class="precios-grid">
+    <div class="precio-card fade-up">
+      <div class="precio-plan">Reparación básica</div>
+      <div class="precio-amount"><sup>desde </sup>45<sup>€</sup></div>
+      <div class="precio-period">por intervención</div>
+      <ul class="precio-features">
+        <li><i class="fas fa-check"></i> Grifería y desagües</li>
+        <li><i class="fas fa-check"></i> Cisternas e inodoros</li>
+        <li><i class="fas fa-check"></i> Pequeñas fugas</li>
+        <li><i class="fas fa-check"></i> Presupuesto previo</li>
+      </ul>
+      <a href="#contacto" class="btn-primary" style="text-decoration:none;display:flex;justify-content:center">Pedir presupuesto</a>
+    </div>
+    <div class="precio-card popular fade-up">
+      <div class="popular-badge">Más solicitado</div>
+      <div class="precio-plan">Reforma de baño</div>
+      <div class="precio-amount"><sup>desde </sup>800<sup>€</sup></div>
+      <div class="precio-period">instalación completa</div>
+      <ul class="precio-features">
+        <li><i class="fas fa-check"></i> Desmontaje y retirada</li>
+        <li><i class="fas fa-check"></i> Instalación sanitarios</li>
+        <li><i class="fas fa-check"></i> Grifería incluida</li>
+        <li><i class="fas fa-check"></i> 2 años de garantía</li>
+        <li><i class="fas fa-check"></i> Certificado de obra</li>
+      </ul>
+      <a href="#contacto" class="btn-primary" style="text-decoration:none;display:flex;justify-content:center">Pedir presupuesto</a>
+    </div>
+    <div class="precio-card fade-up">
+      <div class="precio-plan">Caldera nueva</div>
+      <div class="precio-amount"><sup>desde </sup>650<sup>€</sup></div>
+      <div class="precio-period">instalación completa</div>
+      <ul class="precio-features">
+        <li><i class="fas fa-check"></i> Retirada caldera antigua</li>
+        <li><i class="fas fa-check"></i> Instalación y conexión</li>
+        <li><i class="fas fa-check"></i> Certificado de gas</li>
+        <li><i class="fas fa-check"></i> Revisión anual incluida</li>
+      </ul>
+      <a href="#contacto" class="btn-primary" style="text-decoration:none;display:flex;justify-content:center">Pedir presupuesto</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div>
+    <div class="section-tag">Contacto</div>
+    <h2 class="section-title fade-up">Pide tu presupuesto<br>sin compromiso</h2>
+    <p style="color:var(--gray);margin-bottom:2rem">Rellena el formulario o llámanos directamente. Te respondemos en menos de 30 minutos.</p>
+    <div class="contact-info-items">
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+        <div><h5>Teléfono urgencias</h5><a href="tel:+34600 000 000">600 000 000</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div><h5>Email</h5><a href="mailto:info@fontaneriagarcia.es">info@fontaneriagarcia.es</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+        <div><h5>Zona de servicio</h5><p>Jerez, El Puerto, Sanlúcar, Rota, Chiclana</p></div>
+      </div>
+    </div>
+    <div class="horario-box">
+      <h4><i class="fas fa-clock"></i> Horario de atención</h4>
+      <div class="horario-row"><span>Lunes – Viernes</span><span>8:00 – 20:00</span></div>
+      <div class="horario-row"><span>Sábados</span><span>9:00 – 14:00</span></div>
+      <div class="horario-row urgente"><span>Urgencias</span><span>24h / 365 días</span></div>
+    </div>
+  </div>
+  <div class="form-card fade-up">
+    <h3>Solicitar presupuesto</h3>
+    <p>Gratis y sin compromiso. Te llamamos en menos de 30 minutos.</p>
+    <form id="contactForm">
+      <div class="form-row">
+        <div class="form-group"><label>Nombre *</label><input type="text" placeholder="Tu nombre" required></div>
+        <div class="form-group"><label>Teléfono *</label><input type="tel" placeholder="622 000 000" required></div>
+      </div>
+      <div class="form-group"><label>Servicio que necesitas *</label>
+        <select required>
+          <option value="">Selecciona...</option>
+          <option>🚨 Urgencia / Fuga de agua</option>
+          <option>🔧 Reparación general</option>
+          <option>🚿 Reforma de baño</option>
+          <option>🔥 Caldera / Calentador</option>
+          <option>🏗️ Instalación nueva</option>
+          <option>💧 Tratamiento de agua</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Dirección</label><input type="text" placeholder="Calle y localidad"></div>
+      <div class="form-group"><label>Cuéntanos tu problema</label><textarea placeholder="Describe la avería o lo que necesitas..."></textarea></div>
+      <button type="submit" class="btn-primary form-submit"><i class="fas fa-paper-plane"></i> Enviar solicitud gratis</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <i class="fas fa-circle-check"></i>
+      <h4>¡Solicitud recibida!</h4>
+      <p>Te llamaremos en menos de 30 minutos. Si es urgente llama al <a href="tel:+34600 000 000" style="color:var(--blue)">600 000 000</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<div id="mapa">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51805.86!2d-6.1269!3d36.6850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd2534b4e0b39%3A0x5c1f75fa62a0a1f2!2sJerez%20de%20la%20Frontera!5e0!3m2!1ses!2ses!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon"><i class="fas fa-wrench"></i></div>
+        <div class="nav-logo-text">Fontanería García<span>Jerez de la Frontera</span></div>
+      </a>
+      <p>Fontaneros profesionales con más de 20 años de experiencia en Jerez y la provincia de Cádiz. Disponibles 24h para emergencias.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Urgencias 24h</a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Reparación tuberías</a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Reforma baños</a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Calderas</a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Obra nueva</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="#nosotros"><i class="fas fa-chevron-right"></i> Sobre nosotros</a></li>
+        <li><a href="#precios"><i class="fas fa-chevron-right"></i> Precios</a></li>
+        <li><a href="#testimonios"><i class="fas fa-chevron-right"></i> Opiniones</a></li>
+        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Zona de servicio</h5>
+      <ul>
+        <li><a href="#"><i class="fas fa-map-pin"></i> Jerez de la Frontera</a></li>
+        <li><a href="#"><i class="fas fa-map-pin"></i> El Puerto de Santa María</a></li>
+        <li><a href="#"><i class="fas fa-map-pin"></i> Sanlúcar de Barrameda</a></li>
+        <li><a href="#"><i class="fas fa-map-pin"></i> Rota y Chiclana</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Fontanería García · Todos los derechos reservados · <a href="#">Aviso legal</a></p>
+    <p>Web diseñada por <a href="https://zemorastudio.com">Zemora Studio</a></p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLight()"><i class="fas fa-times"></i></button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+// Navbar
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => { menuBtn.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+function closeMobile() { menuBtn.classList.remove('open'); mobileMenu.classList.remove('open'); }
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Stagger cards
+document.querySelectorAll('.service-card, .paso, .precio-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.08) + 's';
+});
+
+// Hero animations
+document.querySelectorAll('#hero .fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (0.2 + i * 0.15) + 's';
+  setTimeout(() => el.classList.add('visible'), 100);
+});
+
+// Lightbox
+function openLight(item) {
+  document.getElementById('lightboxImg').src = item.querySelector('img').src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLight() { document.getElementById('lightbox').classList.remove('open'); }
+document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLight(); });
+
+// Form
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+});
+</script>
+</body>
+</html>
